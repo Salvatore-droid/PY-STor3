@@ -54,13 +54,14 @@ def run_command(command):
         return False, e.stderr
 
 def install_flatpak():
-    print("Updating system")
+    console.print("Updating system...", style="yellow")
     run_command(["sudo", "apt", "update"])
     line()
-    print("\nInstalling flatpak...")
+    console.print("\nInstalling flatpak...", style="yellow")
     run_command(["sudo", "apt", "install", "-y", "flatpak"])
     run_command(["flatpak", "remote-add", "--if-not-exists", "flathub", "https://flathub.org/repo/flathub.flatpakrepo"])
-    line()            
+    line()      
+    print("\n")      
 
 
 def install_app(app_id):
@@ -78,7 +79,7 @@ def delay():
 
 def line():
     for _ in range(60):
-        sys.stdout.write("-")
+        sys.stdout.write("=")
         sys.stdout.flush()
         time.sleep(0.05)
 
@@ -87,7 +88,7 @@ def line():
 def main():
     delay()
     print('''
-                        
+                                                                                                    
                      <++\ ..app installation usage.. /++>                                                         |              <++ ..app running usage.. ++>
                                                                                                                   |
         [< .. Enter app name: (example) wps .. >]                                                                 | [==[ ..use the comand : flatpak run (Application ID).. ]==]
@@ -100,10 +101,15 @@ def main():
     ''')
     console.print("        **NOTE: Application ID is Key sensitive, Enter the exact Application id to install                        | **NOTE:To view all installed apps, run: flatpak list     \n", style="red")
     delay()
-    app = input("\n       Enter the app name to search: ")
+    terminate = "quit"
+    console.print("\nEnter quit to exit", style="blue")
+    app = input("\nEnter the app name to search: ")
+    if app==terminate:
+        sys.exit(1)
+
     flatpak_installed = check_flatpak()
     if flatpak_installed:
-        console.print("Installed flatpak", style="yellow")
+        console.print("loading please wait...", style="yellow")
     else:
         install_flatpak()
     flatpak_search(app)
