@@ -25,7 +25,7 @@ def flatpak_search(app):
     try:
         subprocess.run(["flatpak", "search", app], check=True)
     except subprocess.CalledProcessError as e:
-        print(f"Error, search not found {app}: {e}")
+        print(f"Error, search not found {app}:{e}")
         sys.exit(1)
 
 def run_app(app_id):
@@ -121,6 +121,8 @@ def main():
         install_flatpak()
     flatpak_search(app)
     app_id = input("\nEnter Application ID to install the app: ")
+    if app_id==terminate:
+        sys.exit(1)
     install_app(app_id)
     run_app(app_id)
 
