@@ -93,7 +93,7 @@ def main():
                      [[== ..app installation usage.. ==]]                                                         |         
                                                                                                                   |
         [= .. Enter app name: (example) wps .. =]                                                                 | 
-        [= .. Search results for 'wps'.. =]-------]                                                               |
+        [= .. Search results for 'wps'.. =]---=---]                                                               |
         [= .. Name              Application ID             Version            Branch       Installation .. =]     |
              WPS Office        com.wps.Office             11.1.0.11719       stable       system                  |        
         [[.. use the Application ID (com.wps.Office) for installation of the app ..]]                             | 
