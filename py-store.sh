@@ -88,22 +88,22 @@ def line():
 
 def main():
     delay()
-    print('''
+    console.print('''
                                                                                                     
-                     <++\ ..app installation usage.. /++>                                                         |         
+                     [[== ..app installation usage.. ==]]                                                         |         
                                                                                                                   |
-        [< .. Enter app name: (example) wps .. >]                                                                 | 
-        [< .. Search results for 'wps'.. >]-------]                                                               |
-        [< .. Name              Application ID             Version            Branch       Installation .. >]     |
+        [= .. Enter app name: (example) wps .. =]                                                                 | 
+        [= .. Search results for 'wps'.. =]-------]                                                               |
+        [= .. Name              Application ID             Version            Branch       Installation .. =]     |
              WPS Office        com.wps.Office             11.1.0.11719       stable       system                  |        
         [[.. use the Application ID (com.wps.Office) for installation of the app ..]]                             | 
                                                                                                                   |
-                    <++ ..app running usage.. ++>                                                                 |
+                    [== ..app running usage.. ==]                                                                 |
                                                                                                                   |
         [==[ ..use the comand : flatpak run (Application ID).. ]==]                                               |
         **NOTE:-After installation, the app is ran automatically by py-store                                      |
                 -Use above command to run app in terminal                                                         |                                          
-    ''')
+    ''', style="light_green")
     console.print("""       **NOTE: Application ID is Key sensitive, Enter the exact Application id to install 
                            
                 **NOTE:To view all installed apps, run: flatpak list     \n""", style="red")
