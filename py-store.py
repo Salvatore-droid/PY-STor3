@@ -24,7 +24,7 @@ def flatpak_search(app):
     try:
         subprocess.run(["flatpak", "search", app], check=True)
     except subprocess.CalledProcessError as e:
-        print(f"Error, search not found {app}: {e}")
+        print(f"Error, search not found {app}:{e}")
         sys.exit(1)
 
 def run_app(app_id):
@@ -87,28 +87,28 @@ def line():
 
 def main():
     delay()
-    print('''
+    console.print("""
                                                                                                     
-                     <++\ ..app installation usage.. /++>                                                         |         
+                    [[=+\ ..app installation usage.. /+=]]                                                        |         
                                                                                                                   |
-        [< .. Enter app name: (example) wps .. >]                                                                 | 
-        [< .. Search results for 'wps'.. >]-------]                                                               |
-        [< .. Name              Application ID             Version            Branch       Installation .. >]     |
+        [= .. Enter app name: (example) wps .. =]                                                                 | 
+        [= .. Search results for 'wps'.. =]-------]                                                               |
+        [= .. Name              Application ID             Version            Branch       Installation .. =]     |
              WPS Office        com.wps.Office             11.1.0.11719       stable       system                  |        
         [[.. use the Application ID (com.wps.Office) for installation of the app ..]]                             | 
                                                                                                                   |
-                    <++ ..app running usage.. ++>                                                                 |
+                    [=+ ..app running usage.. +=]                                                                 |
                                                                                                                   |
         [==[ ..use the comand : flatpak run (Application ID).. ]==]                                               |
         **NOTE:-After installation, the app is ran automatically by py-store                                      |
                 -Use above command to run app in terminal                                                         |                                          
-    ''')
+    """, style="light_green")
     console.print("""       **NOTE: Application ID is Key sensitive, Enter the exact Application id to install 
                            
                 **NOTE:To view all installed apps, run: flatpak list     \n""", style="red")
     delay()
     terminate = "quit"
-    console.print("\nEnter quit to exit", style="blue")
+    console.print("\nEnter quit to exit if no app matches are found", style="blue")
     app = input("\nEnter the app name to search: ")
     if app==terminate:
         sys.exit(1)
@@ -120,6 +120,8 @@ def main():
         install_flatpak()
     flatpak_search(app)
     app_id = input("\nEnter Application ID to install the app: ")
+    if app_id==terminate:
+        sys.exit(1)
     install_app(app_id)
     run_app(app_id)
 
