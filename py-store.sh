@@ -11,14 +11,13 @@ def banner():
     text = "[[<<\...PY-STore../>>]"
     banner=pyfiglet.figlet_format(text)
     console.print(banner, style="cyan")
-banner()
-console.print('''
-            ==[[....PY-STore v-1.0....]]==
+    console.print('''
+                ==[[....PY-STore v-1.0....]]==
 
-        [[\>>>>.. Easier Linux apps access.. <<<</]]
+            [[\>>>>.. Easier Linux apps access.. <<<</]]
 
-      [++[[...Created by Genius ( Salvatore-droid )...]]++]
-''', style="yellow")
+        [++[[...Created by Genius ( Salvatore-droid )...]]++]
+    ''', style="yellow")
 
 
 def flatpak_search(app):
@@ -84,9 +83,42 @@ def line():
         sys.stdout.flush()
         time.sleep(0.05)
 
+def check_pyfiglet():
+    try:
+        subprocess.run(["pip", "list", "|", "grep", "pyfiglet"],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        text=True,
+        check=True
+        )
+        return True
+    except subprocess.CalledProcessError as e:
+        return False, e.stderr
+
+def install_pyfiglet():
+    try:
+        subprocess.run(["sudo", "apt", "install", "python3-pyfiglet"],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        text=True,
+        check=True
+        )
+        return True
+    except subprocess.CalledProcessError as e:
+        return False, e.stderr
+
 
 
 def main():
+    pyfiglet=check_pyfiglet()
+    if pyfiglet:
+        console.print("Initiating boot up sequence..!!!", style="green")
+        time.sleep(2)
+    else:
+        console.print("installing pyfiglet..!!", style="green")
+        install_pyfiglet
+        line()
+    banner()
     delay()
     console.print('''
                                                                                                     
