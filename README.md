@@ -1,5 +1,5 @@
-Py-store is a python script that is developed mainly for the linux begginers, It uses a linux tool called flatpak.
-Py-store is an app download assistant automated script, In it you will find a shell file and a go file:: py-store.sh, go-icon
+Py-store is a python script that is developed mainly for the linux app downloads, It uses a linux tool called flatpak.
+In it you will find a shell file and a go file:: py-store.sh, go-icon
         
 in order to use the pystore shell file to download apps, use the following command for execution:
                 
