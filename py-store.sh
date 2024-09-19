@@ -8,7 +8,7 @@ from rich.console import Console
 console = Console()
 
 def banner():
-    text = "[[<<\...PY-STore../>>]"
+    text = "[[<..PY-STore..>]]"
     banner=pyfiglet.figlet_format(text)
     console.print(banner, style="cyan")
     console.print('''
