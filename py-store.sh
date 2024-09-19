@@ -1,9 +1,23 @@
 #!/usr/bin/env python3
-import pyfiglet
 import subprocess
 import sys
 import time
 from rich.console import Console
+
+def install_pyfiglet():
+    try:
+        subprocess.run(["sudo", "apt", "install", "python3-pyfiglet"],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        text=True,
+        check=True
+        )
+        return True
+    except subprocess.CalledProcessError as e:
+        return False, e.stderr
+
+install_pyfiglet()
+import pyfiglet
 
 console = Console()
 
@@ -95,17 +109,6 @@ def check_pyfiglet():
     except subprocess.CalledProcessError as e:
         return False, e.stderr
 
-def install_pyfiglet():
-    try:
-        subprocess.run(["sudo", "apt", "install", "python3-pyfiglet"],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-        text=True,
-        check=True
-        )
-        return True
-    except subprocess.CalledProcessError as e:
-        return False, e.stderr
 
 
 
