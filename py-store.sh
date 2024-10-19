@@ -28,7 +28,7 @@ def banner():
     console.print('''
                 ==[[....PY-STore v-1.0....]]==
 
-            [[\>>>>.. Easier Linux apps access.. <<<</]]
+            [[== ..Easier Linux apps access.. ==]]
 
         [++[[...Created by Genius ( Salvatore-droid )...]]++]
     ''', style="yellow")
